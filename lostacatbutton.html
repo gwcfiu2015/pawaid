@@ -1,0 +1,138 @@
+<html lang="en">
+<head>
+           <link rel="stylesheet" href="formsstyles.css" style="text/css">
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+     <link href='http://fonts.googleapis.com/css?family=Questrial|Handlee|Kalam|Architects+Daughter|Rock+Salt' rel='stylesheet' type='text/css'>
+          <style>
+            html, body, a, a:hover {
+                cursor:url('http://www.snazzyspace.com/cursorsfolder/dog-paw.png'), auto !important;
+            }
+        </style>
+        <div><a style="position:fixed;z-index:9 !important;top:300px;left:3px;" href="http://www.snazzyspace.com/" title="Tumblr Mouse Cursors" target="_blank"></a>
+        </div>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+    <script type="text/javascript">
+            Parse.initialize("wP8wX9o85Xp2OEvJevv4PYyDAlKbFnB2eCGRHR1O", "yhKICdrFZnUeMd4CKswCPdiAm4fXoXzUsZcwYRKA");
+showFoundCats();        
+function showFoundCats() {
+   // alert("inside show cats function javascript");
+        var FoundPet = Parse.Object.extend("FoundPet");
+        var query = new Parse.Query(FoundPet);
+ //   alert(" in query");
+//        query.equalTo("type", "dog"); 
+  //  alert("about to find cat");
+        query.find({
+            success: function(results) {
+               // alert("Successfully retrieved " + results.length + " pets.");
+                for (var i = 0; i < results.length; i++) {
+                    //alert("Inside for loop");
+                    var object = results[i];
+                    //alert("Working variable");
+                    //alert(object.get('type')+' - '+object.get('color
+                    $("#catsList").append("<table><td><img width='300px' src='"+object.get("image").url()+"' /></td></table>"+"<table><tr><th>Name: </th><td>"+object.get('name')+"</td></tr>"+"<tr><th>Email: </th><td>"+object.get('email')+"</td></tr>"+"<tr><th>Phone Number: </th><td>" +object.get('phone')+"</td></tr>"+"<tr><th>Date Found: </th><td>"+object.get('dateFound')+"</td></tr>"+"<tr><th>Location Found: </th><td>"+object.get('locationFound')+"</td></tr>"+"<tr><th>Pet Name: </th><td>"+object.get('petName')+"</td></tr>"+"<tr><th>Fur Color: </th><td>"+object.get('furColor')+"</td></tr>"+"<tr><th>Pet Gender: </th><td>"+object.get('gender')+"</td></tr>"+"<tr><th>Pet Age: </th><td>"+object.get('age')+"</td></tr>"+"<tr><th>Pet Size: </th><td>"+object.get('size')+"</td></tr>"+"<tr><th>Pet Breed: </th><td>"+object.get('breed')+"</td></tr>"+"<tr><th>Description: </th><td>"+object.get('description')+"</td></tr>"+"<tr><td><br></td></tr></table>");                    //document.getElementById("dogsList").innerHTML = object.get('type')+" "+object.get('color');
+                    //alert("dogs list shown");
+                }
+            },
+            error: function(error) {
+                alert("Error: "+ error.code+ " "+error.message);
+            }
+        
+        });
+}
+        
+//    function showCats() {
+//        window.location="lostacatbutton.html";
+//    }
+        
+var name = "#floatMenu";
+var menuYloc = null;
+ 
+$(document).ready(function(){
+    menuYloc = parseInt($(name).css("top").substring(0,$(name).css("top").indexOf("px")))
+    $(window).scroll(function () { 
+        var offset = menuYloc+$(document).scrollTop()+"px";
+        $(name).animate({top:offset},{duration:500,queue:false});
+    });
+});
+        
+    </script>
+ 
+    </head>
+    
+    <body>
+        <img src="powaidlogo.png">
+        <div id="menuBar">
+            <nav>
+                <a href="http://www.picgifs.com/dog-graphics/"><img src="http://www.picgifs.com/dog-graphics/dog-graphics/dog-funny/dog-graphics-dog-funny-005456.gif" border="0" /></a>
+                <ul>
+                    <li><a href="home.html">Home</a>
+                    </li>
+                    <li><a href="#">Dogs</a>
+
+                        <ul>
+                            <li><a href="lostsdogsbutton.html">I Lost a Dog </a>
+                            </li>
+                            <li><a href="foundadogbutton.html">I Found a Dog</a>
+                            </li>
+                    </li>
+                    </ul>
+                    </li>
+                    <li><a href="#">Cats</a>
+
+                        <ul>
+                            <li><a href="lostacatbutton.html">I Lost a Cat</a>
+                            </li>
+                            <li><a href="foundacatbutton.html">I Found a Cat</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="careTips.html">Care Tips</a>
+                    </li>
+                </ul>
+                </ul>
+    </nav>
+        </div>
+  <h1>Recently Found Cats</h1>   
+<div id="content">
+    <h2> We'll help you find your best friend to make your life PAWsitive again!</h2>
+</div>
+        
+    <div>
+        <table id="catsList">
+            
+        </table>
+    </div>
+    
+<div id="floatMenu">
+    <ul>
+        <li><a href="#up" onclick="return false;"> Back to the Top! </a></li>
+    </ul>
+     
+   <ul>
+        <li><a href="#" onclick="return false;">No luck finding your kitty? Fill out our lost pet form and others will help reunite you with your best friend!</a></li>
+        <li><a href="OfficialLostForm.html"> Find the Form Here! </a></li>
+        
+    </ul>
+     
+
+</div>
+<div id="floatMenu">
+    <ul class="menu1">
+       
+    </ul>
+     
+   <ul class="menu2">
+       
+    </ul>
+     
+    <ul class="menu3">
+     
+    </ul>
+</div>
+   
+    </body>
+     
+    
+</html>

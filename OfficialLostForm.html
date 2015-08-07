@@ -1,0 +1,261 @@
+<html lang="en">
+    
+    <head>
+        <meta charset="utf-8">
+        <title>Paw Aid</title>
+        <link rel="icon" type="image/png" href="powaidlogoicon.png">
+        <link href="animate.css" rel=stylesheet style="text/css">
+        <link rel="stylesheet" href="animalshelter.css" style="text/css">
+        <link href='http://fonts.googleapis.com/css?family=Questrial|Handlee|Kalam|Architects+Daughter|Rock+Salt' rel='stylesheet' type='text/css'>
+        
+        
+        <style>
+            html, body, a, a:hover {
+                cursor:url('http://www.snazzyspace.com/cursorsfolder/dog-paw.png'), auto !important;
+            }
+        </style>
+        <div><a style="position:fixed;z-index:9 !important;top:300px;left:3px;" href="http://www.snazzyspace.com/" title="Tumblr Mouse Cursors" target="_blank"></a>
+        </div>
+        
+        
+          <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.5.0.min.js"></script>
+        
+    <script type="text/javascript">
+        
+        //Alyson's database 
+        Parse.initialize("wP8wX9o85Xp2OEvJevv4PYyDAlKbFnB2eCGRHR1O", "yhKICdrFZnUeMd4CKswCPdiAm4fXoXzUsZcwYRKA");
+        
+        //JD's database 
+        //Parse.initialize("CzUF8YV73IUyuMuIP5T3XtMhpwcmY9CDNmqqzo69", "t7aZLrqI0xHRVAegE0e0Cq4iGee3ivxN2jCxZfwv");
+
+        var TestImage = Parse.Object.extend("TestImage");
+        var testImage = new TestImage(); 
+        //creating LostPet CLASS
+        var LostPet = Parse.Object.extend("LostPet");
+        var lostPet1 = new LostPet();
+
+        
+        function changePage() {
+
+            
+            //document.location.href="vale's stuff/home.html";
+            window.location ="home.html"
+            
+        }
+
+        function addToDatabase() {
+          
+
+
+            //=============================================//         
+            
+
+            lostPet1.set("petType", document.getElementById("type").value);
+            
+            var fileUploadControl = $("#uploadInput")[0];
+            if (fileUploadControl.files.length > 0) {
+                
+                var file = fileUploadControl.files[0];
+                var name = "photo.jpg";
+
+                var parseFile = new Parse.File(name, file);
+               lostPet1.set("image", parseFile); //this line does not work but is the same as yours!!
+                ;
+            }
+            
+            
+            lostPet1.save({
+                //setting attributes for lostPet1
+                name: document.getElementById("myName").value,
+                email: document.getElementById("myEmail").value,
+                phone: document.getElementById("myPhone").value,
+                dateLost: document.getElementById("datePet").value,
+                locationLost: document.getElementById("locationtPet").value,
+                petName: document.getElementById("namePet").value,
+                color: document.getElementById("colorPet").value,
+                gender: document.getElementById("genderPet").value,
+                age: document.getElementById("agePet").value,
+                size: document.getElementById("sizePet").value,
+                breed: document.getElementById("breedPet").value,
+                description: document.getElementById("descriptionPet").value
+            
+            }, {
+                success: function(lostPet1) {
+                    alert("Your form has been saved!");
+                    
+                    //test();
+                    //window.location = "vale's stuff/home.html";
+                    changePage();
+                },
+                error: function(lostPet1, error) {
+                    alert("Sorry something went wrong, try submitting the form again or contact us.");
+                }
+            });
+           
+        }
+//       function showLostDogs() {
+//        window.location="lostdogsbutton.html" //==========================================//
+    </script>
+</head>
+<body>
+    <img src="powaidlogo.png">
+        
+        <div id="menuBar">
+            <nav>
+                <ul>
+                    <li><a href="home.html">Home</a>
+                    </li>
+                    <li><a href="">Dogs</a>
+
+                        <ul>
+                              <li><a href="lostdogsbutton.html">i lost a dog </a>
+                            </li>
+                            <li><a  href="foundadogbutton.html">i found a dog</a>
+                            </li>
+                    </li>
+                    </ul>
+                    </li>
+                    <li><a href="#">Cats</a>
+
+                        <ul>
+                            <li><a href="#"> Lost </a>
+                            </li>
+                            <li><a href="#">Found</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li><a href="caretips.html">Care Tips</a>
+                    </li>
+                </ul>
+                </ul>
+            </nav>
+        </div>
+</body>
+        <!-- <div id="wrapper">
+    
+    <header><h1>PAW AID</h1></header>
+    </div>
+-->
+        <div id="content">
+             <h2>Welcome to Paw Aid! We are here to help you find your little bundles of joy.</h2>
+
+            <div id="login-wrapper"></div>
+        </div>
+        
+           <body>
+    <div>
+        <form onsubmit="addToDatabase()">
+            <table>
+
+    
+         <h1>I lost a...</h1> 
+        <p>Please fill out this form if the animal you lost is not in the lost list. Please fill out all the fields and if you are unsure about one of them give your best guess or just leave it blank.</p>
+        <div>
+            <form >
+                <table>
+                    <th>User Information</th>
+                    <tr>
+                        <td>*Name:</td>
+                        <td>
+                            <input type="text" id="myName" name="myName" required="required" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>*Email address:</td>
+                        <td>
+                            <input type="email" id="myEmail" name="email" required="required" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Phone number:</td>
+                        <td>
+                            <input type="tel" id="myPhone" name="phone" maxlength="20" />
+                        </td>
+                    </tr>
+                </table>
+                <table>
+                    <br>
+                    <th>Pet Information</th>
+                    <tr>
+                        <td>*Date lost:</td>
+                        <td>
+                            <input type="text" id="datePet" name="dateLost" required="required" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>*Location lost (Zip code):</td>
+                        <td>
+                            <input type="text" id="locationtPet" name="locationLost" maxlength="5" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Type:</td>
+                        <td>
+                            <select id="type" name="petType">
+                                <option value="dog">Dog</option>
+                                <option value="cat">Cat</option>
+                            </select>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Name:</td>
+                        <td>
+                            <input type="text" id="namePet" name="petName" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>*Fur color:</td>
+                        <td>
+                            <input type="text" id="colorPet" name="color" required="required" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Pet gender:</td>
+                        <td>
+                            <input type="text" id="genderPet" name="gender" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Breed:</td>
+                        <td>
+                            <input type="text" id="breedPet" name="breed" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Approximate age:</td>
+                        <td>
+                            <input type="text" id="agePet" name="age" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>*Approximate size:</td>
+                        <td>
+                            <input type="text" id="sizePet" name="size" required="required" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>*Description of pet:</td>
+                        <td>
+                            <input type="text" id="descriptionPet" name="description" required="required" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <!-- <td><input type="button" id="submitPet" value="Submit" onclick="addToDatabase()"> </td>-->
+                        <tr>
+                            <td>*Picture of pet:</td>
+                            <td>
+                                <input type="file" id="uploadInput" name="uploadInput" required="required" /> </td>
+                        </tr>
+                        <td>
+                            <input type="button" value="Submit" onclick="addToDatabase()"/>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    
+    
+</body>
+
+</html>
